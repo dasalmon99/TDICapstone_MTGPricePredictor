@@ -1,0 +1,3 @@
+# Magic the Gathering Price Predictor
+## Summary:
+The purpose of this notebook is to output price predictions for modern staples as determined by a pretrained LSTM RNN. This neural network is trained on historical price and tournament play data, using a 30 day lag time and makes predictions for 7 days into the future. There are over 300 cards in the dataset and there are options for keeping the dataset up to date in this notebook. All of the tournament and price data are scraped from MTGGoldfish. 
