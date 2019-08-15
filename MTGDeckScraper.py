@@ -49,7 +49,7 @@ def getdecks(tournament_name):
 def get_price_history(expansion, card_name):
     """Returns daily price history of card from mtggoldfish (must include expansion/printing)"""
     
-    expansion = expansion.replace(' ','+').replace(':','')    
+    expansion = expansion.replace(' ','+').replace(':','').replace('\'', '')    
     card_name = card_name.replace(' ','+').replace('\'', '').replace(',','')
     with requests.get('https://www.mtggoldfish.com/price/'+expansion+'/'+card_name) as r:
 

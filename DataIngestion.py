@@ -74,12 +74,16 @@ def UpdatePrices():
 
     AllPrices = pd.DataFrame()
     for card in Card_list:
-        print('Getting: ' + card)
         #Find earliest printing in an expansion
         card_printings = SetList[SetList['code'].isin(AllCards[card]['printings'])]
         card_printings = card_printings[(card_printings.type == 'expansion') | (card_printings.type == 'core')]
         if len(card_printings) > 0:
             set_name = card_printings[card_printings.releaseDate == card_printings.releaseDate.min()].name.values[0]
+            if set_name == 'Magic 2014':
+                set_name = 'Magic 2014 Core Set'
+            if set_name == 'Magic 2015':
+                set_name = 'Magic 2015 Core Set'
+            print('Getting: ' + set_name + ' '+ card)
             Price = MTGDeckScraper.get_price_history(set_name, card)
             Price = Price.set_index(Price.Date)
             Price[card] = Price.Price
